@@ -1,0 +1,55 @@
+
+# Visual Studio
+**/.vs/
+**/bin/
+**/obj/
+**/packages/
+
+# Visual Studio
+
+# NativeScript
+**/tns_modules/
+nativescript-sample/**/platforms/
+nativescript-sample/**/lib/
+nativescript-sample/**/hooks/
+**/typings/
+nativescript-sample/**/*.js
+
+# NativeScript
+
+# Cordova
+
+## Android
+**/platforms/android/assets/www
+**/platforms/android/bin/
+**/platforms/android/gen/
+**/platforms/android/res/xml/config.xml
+
+## iOS
+**/platforms/ios/build/
+**/platforms/ios/CordovaLib/build/
+**/platforms/ios/www
+**/platforms/ios/.staging
+
+# Cordova
+
+# Node
+**/node_modules/
+
+# Node
+
+# JetBrains
+**/.idea/
+
+# JetBrains
+
+# Mac
+**/.DS_Store
+
+# Mac
+
+# iOSt
+**/build
+**/Pods
+
+# iOS
