@@ -2,10 +2,10 @@ import React from 'react';
 import { Text } from 'react-native';
 import { ListItem } from 'native-base';
 
-const PlayerListItem = ({ player }) => {
+const PlayerListItem = ({ player, onSelected }) => {
   const { firstName, lastName } = player;
   return (
-    <ListItem>
+    <ListItem button onPress={() => onSelected(player)}>
       <Text>
         {lastName}, {firstName}
       </Text>

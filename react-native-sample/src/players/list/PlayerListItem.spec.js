@@ -1,4 +1,5 @@
 import React from 'react';
+import { ListItem } from 'native-base';
 import { shallow } from 'enzyme';
 
 import { getAllText } from '../../../testing';
@@ -10,4 +11,15 @@ it('should have player name', () => {
   expect(text).toContain('bob, something');
 });
 
-it('should trigger select player', () => {});
+it('should trigger select player', () => {
+  let player;
+  const item = shallow(
+    <PlayerListItem player={{ id: 65 }} onSelected={p => (player = p)} />,
+  );
+
+  item
+    .find(ListItem)
+    .props()
+    .onPress();
+  expect(player).toEqual({ id: 65 });
+});
