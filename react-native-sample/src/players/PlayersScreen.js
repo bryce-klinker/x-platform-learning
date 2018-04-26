@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text } from 'react-native';
 import PlayersList from './list/PlayersList';
+import PlayerDetail from './detail/PlayerDetail';
 
 export default class PlayersScreen extends Component {
   static screenName = 'Players';
@@ -14,6 +15,16 @@ export default class PlayersScreen extends Component {
 
   render() {
     const { players } = this.state;
-    return <PlayersList players={players} />;
+    return (
+      <PlayersList
+        players={players}
+        onSelected={p => this.navigateToPlayer(p)}
+      />
+    );
+  }
+
+  navigateToPlayer(player) {
+    const { navigator } = this.props;
+    navigator.push({ screen: PlayerDetail.screenName });
   }
 }

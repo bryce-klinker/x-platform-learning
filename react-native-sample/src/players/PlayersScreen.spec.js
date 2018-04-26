@@ -1,8 +1,13 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
+import PlayerDetailScreen from './detail/PlayerDetail';
 import PlayersScreen from './PlayersScreen';
-import { getAllText, flushPromisesAndUpdate } from '../../testing';
+import {
+  getAllText,
+  flushPromisesAndUpdate,
+  fakeNavigator,
+} from '../../testing';
 import PlayersList from './list/PlayersList';
 
 it('should have players', async () => {
@@ -13,4 +18,19 @@ it('should have players', async () => {
   await flushPromisesAndUpdate(screen);
 
   expect(screen.find(PlayersList).props().players).toEqual(players);
+});
+
+it('should navigate to player', async () => {
+  const players = [{}, {}];
+  fetch.mockResponse(JSON.stringify(players));
+
+  const screen = shallow(<PlayersScreen navigator={fakeNavigator} />);
+  await flushPromisesAndUpdate(screen);
+  screen
+    .find(PlayersList)
+    .props()
+    .onSelected({ id: 55 });
+  expect(fakeNavigator.push).toHaveBeenCalledWith({
+    screen: PlayerDetailScreen.screeName,
+  });
 });
