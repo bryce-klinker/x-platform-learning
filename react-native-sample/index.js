@@ -12,14 +12,17 @@ Navigation.startTabBasedApp({
     {
       label: 'Competitions',
       screen: CompetitionsScreen.screenName,
+      title: 'Competitions',
     },
     {
       label: 'Clubs',
       screen: ClubsScreen.screenName,
+      title: 'Clubs',
     },
     {
       label: 'Players',
       screen: PlayersScreen.screenName,
+      title: 'Players',
     },
   ],
 });

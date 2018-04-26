@@ -5,6 +5,7 @@
 
 # dependencies
 /node_modules
+android/app/src/main/assets/fonts/
 
 # misc
 .env.local
