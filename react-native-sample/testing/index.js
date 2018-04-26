@@ -5,3 +5,4 @@ configure({ adapter: new Adapter() });
 global.fetch = require('jest-fetch-mock');
 
 export * from './get-all-text';
+export * from './flush-promises';
