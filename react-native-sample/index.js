@@ -1,12 +1,25 @@
 import React, { Component } from 'react';
-import { Navigation, Screen } from 'react-native-navigation';
-import App, { SCREEN_NAME } from './src/App';
+import { Navigation } from 'react-native-navigation';
 
-Navigation.registerComponent(SCREEN_NAME, () => App);
+import ClubsScreen from './src/clubs/ClubsScreen';
+import CompetitionsScreen from './src/competitions/CompetitionsScreen';
+import PlayersScreen from './src/players/PlayersScreen';
+import registerScreens from './src/screens';
 
-Navigation.startSingleScreenApp({
-  screen: {
-    screen: SCREEN_NAME,
-    title: 'Footy',
-  },
+registerScreens();
+Navigation.startTabBasedApp({
+  tabs: [
+    {
+      label: 'Competitions',
+      screen: CompetitionsScreen.screenName,
+    },
+    {
+      label: 'Clubs',
+      screen: ClubsScreen.screenName,
+    },
+    {
+      label: 'Players',
+      screen: PlayersScreen.screenName,
+    },
+  ],
 });
