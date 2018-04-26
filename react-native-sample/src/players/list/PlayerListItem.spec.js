@@ -9,3 +9,5 @@ it('should have player name', () => {
   const text = getAllText(shallow(<PlayerListItem player={player} />));
   expect(text).toContain('bob, something');
 });
+
+it('should trigger select player', () => {});
