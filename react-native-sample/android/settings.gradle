@@ -1,0 +1,3 @@
+rootProject.name = 'footy'
+
+include ':app'
