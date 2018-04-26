@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import PlayerDetailScreen from './detail/PlayerDetail';
+import PlayerDetailScreen from './detail/PlayerDetailScreen';
 import PlayersScreen from './PlayersScreen';
 import {
   getAllText,
@@ -31,6 +31,7 @@ it('should navigate to player', async () => {
     .props()
     .onSelected({ id: 55 });
   expect(fakeNavigator.push).toHaveBeenCalledWith({
-    screen: PlayerDetailScreen.screeName,
+    screen: PlayerDetailScreen.screenName,
+    passProps: { playerId: 55 },
   });
 });

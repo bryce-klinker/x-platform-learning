@@ -7,7 +7,8 @@ export default class PlayerDetailScreen extends Component {
   state = { player: null };
 
   async componentDidMount() {
-    const response = await fetch('http://localhost:3000/players/54');
+    const { playerId } = this.props;
+    const response = await fetch(`http://localhost:3000/players/${playerId}`);
     const player = await response.json();
     this.setState({ player });
   }

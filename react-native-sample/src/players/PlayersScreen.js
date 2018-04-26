@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text } from 'react-native';
 import PlayersList from './list/PlayersList';
-import PlayerDetail from './detail/PlayerDetail';
+import PlayerDetailScreen from './detail/PlayerDetailScreen';
 
 export default class PlayersScreen extends Component {
   static screenName = 'Players';
@@ -25,6 +25,9 @@ export default class PlayersScreen extends Component {
 
   navigateToPlayer(player) {
     const { navigator } = this.props;
-    navigator.push({ screen: PlayerDetail.screenName });
+    navigator.push({
+      screen: PlayerDetailScreen.screenName,
+      passProps: { playerId: player.id },
+    });
   }
 }
