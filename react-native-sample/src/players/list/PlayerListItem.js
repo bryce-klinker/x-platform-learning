@@ -5,7 +5,7 @@ import { ListItem } from 'native-base';
 const PlayerListItem = ({ player, onSelected }) => {
   const { firstName, lastName } = player;
   return (
-    <ListItem button onPress={() => onSelected(player)}>
+    <ListItem testID="player-item" button onPress={() => onSelected(player)}>
       <Text>
         {lastName}, {firstName}
       </Text>

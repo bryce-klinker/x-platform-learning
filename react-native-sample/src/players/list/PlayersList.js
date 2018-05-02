@@ -7,7 +7,7 @@ const PlayersList = ({ players, onSelected }) => {
   const items = players.map(p => (
     <PlayerListItem key={p.id} player={p} onSelected={onSelected} />
   ));
-  return <List>{items}</List>;
+  return <List testID="players">{items}</List>;
 };
 
 export default PlayersList;

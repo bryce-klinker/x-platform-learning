@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text } from 'react-native';
-import { LoadingIndicator } from '../../common/components/LoadingIndicator';
+import { LoadingIndicator } from '../../common';
 
 const PlayerDetail = ({ player }) => {
   if (!player) {
