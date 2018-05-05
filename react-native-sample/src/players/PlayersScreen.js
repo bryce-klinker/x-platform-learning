@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
 import PlayersList from './list/PlayersList';
 import PlayerDetailScreen from './detail/PlayerDetailScreen';
 
 export default class PlayersScreen extends Component {
-  static screenName = 'Players';
   state = { players: [] };
 
   async componentDidMount() {

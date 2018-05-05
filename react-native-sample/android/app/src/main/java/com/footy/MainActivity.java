@@ -1,9 +1,11 @@
 package com.footy;
 
 import com.facebook.react.ReactActivity;
-import com.reactnativenavigation.controllers.SplashActivity;
 
 
-public class MainActivity extends SplashActivity {
-
+public class MainActivity extends ReactActivity {
+    @Override
+    protected String getMainComponentName() {
+        return "footy";
+    }
 }

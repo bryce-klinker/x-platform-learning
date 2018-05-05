@@ -3,11 +3,7 @@ import { shallow } from 'enzyme';
 
 import PlayerDetailScreen from './detail/PlayerDetailScreen';
 import PlayersScreen from './PlayersScreen';
-import {
-  getAllText,
-  flushPromisesAndUpdate,
-  fakeNavigator,
-} from '../../testing';
+import { flushPromisesAndUpdate, fakeNavigator } from '../../testing';
 import PlayersList from './list/PlayersList';
 
 it('should have players', async () => {
