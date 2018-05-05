@@ -22,10 +22,9 @@ export default class PlayersScreen extends Component {
   }
 
   navigateToPlayer(player) {
-    const { navigator } = this.props;
-    navigator.push({
-      screen: PlayerDetailScreen.screenName,
-      passProps: { playerId: player.id },
+    const { navigation } = this.props;
+    navigation.navigate(PlayerDetailScreen.screenName, {
+      playerId: player.id,
     });
   }
 }
