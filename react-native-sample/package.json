@@ -4,6 +4,7 @@
   "private": true,
   "devDependencies": {
     "babel-preset-react-native-stage-0": "1.0.1",
+    "babel-register": "6.26.0",
     "detox": "7.3.4",
     "enzyme": "3.3.0",
     "enzyme-adapter-react-16": "1.1.1",
@@ -22,6 +23,7 @@
   "scripts": {
     "precommit": "pretty-quick --staged",
     "start": "react-native start",
+    "start:mock-api": "node ./mock-api.js",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "test": "jest",
