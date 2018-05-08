@@ -15,8 +15,11 @@ packager_pid=$!
 # Wait for the emulator to be ready
 adb wait-for-device
 
+# Build for detox
+detox build -c android.sim.release
+
 # Run detox tests
-./node_modules/.bin/detox -c android.sim.release
+detox test -c android.sim.release
 
 # Kill processes the emulator and packager spawned
 pkill -9 -P $emulator_pid

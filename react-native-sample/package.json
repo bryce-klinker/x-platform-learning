@@ -31,7 +31,7 @@
     "lint": "prettier --write index.js testing/**/*.js src/**/*.js",
     "pree2e:ios": "detox build -c ios.sim.debug",
     "e2e:ios": "detox test -c ios.sim.debug",
-    "pree2e:android": "./scripts/setup-android-e2e.sh",
+    "pree2e:android": "./scripts/setup-android-emulator.sh",
     "e2e:android": "./scripts/execute-android-e2e-tests.sh",
     "e2e": "yarn e2e:ios && yarn e2e:android"
   },

@@ -1,9 +1,10 @@
-package com.example;
+package com.footy;
 
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
+import com.footy.MainActivity;
 import com.wix.detox.Detox;
 
 import org.junit.Rule;

@@ -24,4 +24,7 @@ export SYSTEM_IMAGE="system-images;android-24;google_apis;x86"
 
 echo yes | sdkmanager "$SYSTEM_IMAGE"
 
-echo no | avdmanager create avd -n "e2e-emulator" -k "$SYSTEM_IMAGE"
+avdmanager list | grep -i "e2e-emulator"
+if [[ $? != 0 ]]; then
+  echo no | avdmanager create avd -n "e2e-emulator" -k "$SYSTEM_IMAGE"
+fi
