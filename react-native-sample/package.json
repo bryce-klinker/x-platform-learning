@@ -2,9 +2,39 @@
   "name": "react-native-sample",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "precommit": "pretty-quick --staged",
+    "setup:android-emulator": "./scripts/setup-android-emulator.sh",
+    "start": "react-native start",
+    "start:mock-api": "node ./mock-api.js",
+    "android": "cross-env ENVFILE=.env.android.dev react-native run-android",
+    "ios": "cross-env ENVFILE=.env.ios.dev react-native run-ios",
+    "test": "jest",
+    "test:watch": "yarn test --watch",
+    "lint": "prettier --write index.js testing/**/*.js src/**/*.js",
+    "pree2e:ios": "detox build -c ios.sim.release",
+    "e2e:ios": "detox test -c ios.sim.release --cleanup",
+    "poste2e:ios": "yarn kill:metro",
+    "pree2e:android": "yarn setup:android-emulator",
+    "e2e:android": "./scripts/execute-android-e2e-tests.sh",
+    "poste2e:android": "yarn kill:metro",
+    "pree2e": "yarn kill:metro",
+    "e2e": "yarn e2e:ios && yarn e2e:android",
+    "kill:android-emulator": "adb emu kill",
+    "kill:metro": "lsof -t -i:8081 | xargs kill -9"
+  },
+  "dependencies": {
+    "native-base": "2.4.2",
+    "react": "16.3.1",
+    "react-native": "0.55.3",
+    "react-native-config": "0.11.5",
+    "react-navigation": "2.0.0-rc.9"
+  },
   "devDependencies": {
     "babel-preset-react-native-stage-0": "1.0.1",
     "babel-register": "6.26.0",
+    "concurrently": "3.5.1",
+    "cross-env": "5.1.4",
     "detox": "7.3.4",
     "enzyme": "3.3.0",
     "enzyme-adapter-react-16": "1.1.1",
@@ -20,33 +50,11 @@
     "react-dom": "16.3.1",
     "react-test-renderer": "16.3.1"
   },
-  "scripts": {
-    "precommit": "pretty-quick --staged",
-    "start": "react-native start",
-    "start:mock-api": "node ./mock-api.js",
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
-    "test": "jest",
-    "test:watch": "yarn test --watch",
-    "lint": "prettier --write index.js testing/**/*.js src/**/*.js",
-    "pree2e:ios": "detox build -c ios.sim.debug",
-    "e2e:ios": "detox test -c ios.sim.debug",
-    "pree2e:android": "./scripts/setup-android-emulator.sh",
-    "e2e:android": "./scripts/execute-android-e2e-tests.sh",
-    "e2e": "yarn e2e:ios && yarn e2e:android"
-  },
   "jest": {
     "preset": "react-native",
     "testMatch": ["<rootDir>/src/**/?(*.)(spec|test).js?(x)"],
     "transformIgnorePatterns": ["/node_modules/(?!native-base)/"],
     "setupFiles": ["./testing/index.js"]
-  },
-  "dependencies": {
-    "native-base": "2.4.2",
-    "react": "16.3.1",
-    "react-native": "0.55.3",
-    "react-native-config": "0.11.5",
-    "react-navigation": "2.0.0-rc.9"
   },
   "prettier": {
     "singleQuote": true,
@@ -56,18 +64,18 @@
     "test-runner": "jest",
     "runner-config": "e2e/config.json",
     "configurations": {
-      "ios.sim.debug": {
+      "ios.sim.release": {
         "binaryPath":
-          "ios/build/Build/Products/Debug-iphonesimulator/footy.app",
+          "ios/build/Build/Products/Release-iphonesimulator/footy.app",
         "build":
-          "xcodebuild -project ios/footy.xcodeproj -scheme footy -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
+          "cross-env ENVFILE=.env.ios.e2e xcodebuild -project ios/footy.xcodeproj -scheme footy -configuration Release -sdk iphonesimulator -derivedDataPath ios/build",
         "type": "ios.simulator",
         "name": "iPhone 7"
       },
       "android.sim.release": {
         "binaryPath": "android/app/build/outputs/apk/release/app-release.apk",
         "build":
-          "cd android && ./gradlew assembleRelease assembleAndroidTest -DtestBuildType=release && cd ..",
+          "cd android && cross-env ENVFILE=.env.android.e2e ./gradlew assembleRelease assembleAndroidTest -DtestBuildType=release && cd ..",
         "type": "android.attached",
         "name": "e2e-emulator"
       }
